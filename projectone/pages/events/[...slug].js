@@ -4,6 +4,8 @@ import EventList from "../../components/events/event-list";
 import Button from "../../components/ui/button";
 import { Fragment } from "react";
 import ResultsTitle from "../../components/events/results-title/results-title";
+import ErrorAlert from "../../components/ui/error-alert/error-alert";
+
 
 function FilteredEvents() {
   const router = useRouter();
@@ -30,10 +32,10 @@ function FilteredEvents() {
   ) {
     return (
       <Fragment>
+        <ErrorAlert><p>Invalid filter. Please adjust your values</p></ErrorAlert>
         <div className="center">
           <Button link="/events">Show All Events</Button>
         </div>
-        <p>Invalid filter. Please adjust your values</p>
       </Fragment>
     );
   }
@@ -46,7 +48,7 @@ function FilteredEvents() {
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <Fragment>
-        <p> No events founds for the chosen filter!!</p>
+        <ErrorAlert><p> No events founds for the chosen filter!!</p></ErrorAlert>
         <div className="center">
           <Button link="/events">Show All Events</Button>
         </div>
